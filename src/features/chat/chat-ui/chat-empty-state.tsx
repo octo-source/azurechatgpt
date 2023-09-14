@@ -4,19 +4,23 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ArrowUpCircle, Loader2 } from "lucide-react";
 import { FC, useState } from "react";
-import { ChatType, ConversationStyle, LLMModel } from "../chat-services/models";
+import { ChatType, ConversationStyle, LLMModel, Persona } from "../chat-services/models";
 import { ChatModelSelector } from "./chat-model-selector";
 import { ChatStyleSelector } from "./chat-style-selector";
 import { ChatTypeSelector } from "./chat-type-selector";
+import { ChatPersonaSelector } from "./chat-persona-selector";
+
 interface Prop {
   isUploadingFile: boolean;
   llmModel: LLMModel;
   chatType: ChatType;
   conversationStyle: ConversationStyle;
+  persona: Persona;
   onChatTypeChange: (value: ChatType) => void;
   onConversationStyleChange: (value: ConversationStyle) => void;
   onLLMModelChange: (value: LLMModel) => void;
   onFileChange: (file: FormData) => void;
+  onPersonaChange: (value: Persona) => void;
 }
 
 export const EmptyState: FC<Prop> = (props) => {
@@ -81,6 +85,16 @@ export const EmptyState: FC<Prop> = (props) => {
             disable={false}
           />
         </div>
+        <div className="flex flex-col gap-2">
+          <p className="text-sm text-muted-foreground">
+            Choose a Persona for your conversation
+          </p>
+          <ChatPersonaSelector
+            persona={props.persona}
+            onPersonaChange={props.onPersonaChange}
+            disable={false}
+          />
+        </div>
         {showFileUpload === "data" && (
           <div className="flex flex-col gap-2">
             <form onSubmit={onSubmit} className="flex gap-2">
@@ -90,7 +104,7 @@ export const EmptyState: FC<Prop> = (props) => {
                 required
                 disabled={props.isUploadingFile}
                 placeholder="Describe the purpose of the document"
-                onChange={(e) => {setIsFileNull(e.currentTarget.value === null)}}
+                onChange={(e) => { setIsFileNull(e.currentTarget.value === null) }}
               />
               <Button
                 type="submit"

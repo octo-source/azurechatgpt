@@ -18,6 +18,7 @@ import {
   ChatType,
   ConversationStyle,
   LLMModel,
+  Persona,
   PromptGPTBody,
 } from "../chat-services/models";
 import { transformCosmosToAIModel } from "../chat-services/utils";
@@ -30,7 +31,7 @@ interface Prop {
 }
 
 export const ChatUI: FC<Prop> = (props) => {
-  const { id, chatType, conversationStyle, model } = props.chatThread;
+  const { id, chatType, conversationStyle, model, persona } = props.chatThread;
 
   const { data: session } = useSession();
 
@@ -41,6 +42,7 @@ export const ChatUI: FC<Prop> = (props) => {
     model: model,
     chatType: chatType,
     conversationStyle: conversationStyle,
+    persona: persona,
   });
 
   const { toast } = useToast();
@@ -90,6 +92,10 @@ export const ChatUI: FC<Prop> = (props) => {
     setBody((e) => ({ ...e, conversationStyle: value }));
   };
 
+  const onPersonaChange = (value: Persona) => {
+    setBody((e) => ({ ...e, persona: value }));
+  };
+
   const onHandleSubmit = (e: FormEvent<HTMLFormElement>) => {
     handleSubmit(e);
   };
@@ -120,6 +126,7 @@ export const ChatUI: FC<Prop> = (props) => {
           chatType={chatBody.chatType}
           conversationStyle={chatBody.conversationStyle}
           llmModel={chatBody.model}
+          persona={chatBody.persona}
         />
       </div>
       <div className=" pb-[80px] ">
@@ -150,9 +157,11 @@ export const ChatUI: FC<Prop> = (props) => {
           onLLMModelChange={onChatModelChange}
           onConversationStyleChange={onConversationStyleChange}
           onChatTypeChange={onChatTypeChange}
+          onPersonaChange={onPersonaChange}
           chatType={chatBody.chatType}
           llmModel={chatBody.model}
           conversationStyle={chatBody.conversationStyle}
+          persona={chatBody.persona}
         />
       )}
 

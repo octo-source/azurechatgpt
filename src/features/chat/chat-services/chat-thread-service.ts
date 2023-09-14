@@ -12,6 +12,7 @@ import {
   ChatThreadModel,
   ChatType,
   ConversationStyle,
+  Persona,
   LLMModel,
   PromptGPTProps,
 } from "./models";
@@ -135,6 +136,7 @@ export const updateChatThreadTitle = async (
   modelName: LLMModel,
   chatType: ChatType,
   conversationStyle: ConversationStyle,
+  persona: Persona,
   userMessage: string
 ) => {
   if (messages.length === 0) {
@@ -143,6 +145,7 @@ export const updateChatThreadTitle = async (
       model: modelName,
       chatType: chatType,
       conversationStyle: conversationStyle,
+      persona: persona,
       name: userMessage.substring(0, 30),
     });
 
@@ -163,6 +166,7 @@ export const CreateChatThread = async () => {
     chatType: "simple",
     model: "gpt-3.5",
     conversationStyle: "precise",
+    persona: "normal",
     type: CHAT_THREAD_ATTRIBUTE,
   };
 
@@ -172,7 +176,7 @@ export const CreateChatThread = async () => {
 };
 
 export const initAndGuardChatSession = async (props: PromptGPTProps) => {
-  const { messages, id, model, chatType, conversationStyle } = props;
+  const { messages, id, model, chatType, conversationStyle, persona } = props;
 
   //last message
   const lastHumanMessage = messages[messages.length - 1];
@@ -186,6 +190,7 @@ export const initAndGuardChatSession = async (props: PromptGPTProps) => {
     model,
     chatType,
     conversationStyle,
+    persona,
     lastHumanMessage.content
   );
 
