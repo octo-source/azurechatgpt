@@ -1,1 +1,1 @@
-export const AI_NAME = "HearstGPT";
+export const AI_NAME = "HearstChat";
