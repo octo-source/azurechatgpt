@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import InitialsAvatar from "@/components/ui/initials-avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -21,11 +22,15 @@ const UserProfile = () => {
       <DropdownMenuTrigger asChild>
         <div className="flex flex-col items-stretch">
           <Button variant="link" className="relative gap-2 p-0 justify-start">
-            <Avatar className="">
+          <Avatar className="">
+            {session?.user?.image ? (
               <AvatarImage
                 src={session?.user?.image!}
                 alt={session?.user?.name!}
               />
+            ) : (
+              <InitialsAvatar name={session?.user?.name!} />
+            )}
             </Avatar>
           </Button>
         </div>
