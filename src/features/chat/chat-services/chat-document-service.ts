@@ -7,6 +7,7 @@ import {
   AzureKeyCredential,
   DocumentAnalysisClient,
 } from "@azure/ai-form-recognizer";
+import { DefaultAzureCredential } from "@azure/identity";
 import { Document } from "langchain/document";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
@@ -113,10 +114,7 @@ export const initAzureSearchVectorStore = () => {
 export const initDocumentIntelligence = () => {
   const client = new DocumentAnalysisClient(
     process.env.AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT,
-    new AzureKeyCredential(process.env.AZURE_DOCUMENT_INTELLIGENCE_KEY),
-    {
-      apiVersion: "2022-08-31",
-    }
+    new DefaultAzureCredential()
   );
 
   return client;
