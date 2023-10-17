@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import Typography from "../typography";
 import { Avatar, AvatarImage } from "../ui/avatar";
+import InitialsAvatar from "../ui/initials-avatar";
 import { Button } from "../ui/button";
 import { CodeBlock } from "./code-block";
 import { MemoizedReactMarkdown } from "./memoized-react-markdown";
@@ -38,8 +39,15 @@ const ChatRow: FC<ChatRowProps> = (props) => {
       <div className="container mx-auto max-w-4xl py-6">
         <div className="flex items-center justify-between">
           <div className="flex gap-4 items-center">
-            <Avatar>
-              <AvatarImage src={props.profilePicture} />
+            <Avatar rounded={props.type === "user"} className="">
+              {props.profilePicture ? (
+                <AvatarImage
+                  src={props.profilePicture}
+                  alt={props.name!}
+                />
+              ) : (
+                <InitialsAvatar name={props.name!} />
+              )}
             </Avatar>
             <Typography variant="h5" className="capitalize text-primary">
               {props.name}

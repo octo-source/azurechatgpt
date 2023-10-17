@@ -12,8 +12,8 @@ export const MainMenu = () => {
           className="w-10 h-10 items-center justify-center flex"
           title="Home"
         >
-          <Avatar className="">
-            <AvatarImage src="/ai-icon.png" />
+          <Avatar rounded={false} className="">
+            <AvatarImage src="/images/ai-icon.png" />
           </Avatar>
         </Link>
         <Link

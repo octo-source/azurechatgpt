@@ -16,8 +16,8 @@ export const LogIn = () => {
     <Card className="flex gap-2 flex-col min-w-[300px]">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl flex gap-2">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={"ai-icon.png"} />
+          <Avatar rounded={false} className="h-8 w-8">
+            <AvatarImage src={"/images/ai-icon.png"} />
           </Avatar>
           <span className="text-primary">{AI_NAME}</span>
         </CardTitle>
