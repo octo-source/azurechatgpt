@@ -8,6 +8,7 @@ import remarkMath from "remark-math";
 import Typography from "../typography";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import InitialsAvatar from "../ui/initials-avatar";
+import { initialsFromName } from "@/features/common/initials";
 import { Button } from "../ui/button";
 import { CodeBlock } from "./code-block";
 import { MemoizedReactMarkdown } from "./memoized-react-markdown";
@@ -46,7 +47,7 @@ const ChatRow: FC<ChatRowProps> = (props) => {
                   alt={props.name!}
                 />
               ) : (
-                <InitialsAvatar name={props.name!} />
+                <InitialsAvatar initials={initialsFromName(props.name)} />
               )}
             </Avatar>
             <Typography variant="h5" className="capitalize text-primary">
