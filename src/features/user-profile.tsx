@@ -1,5 +1,6 @@
 "use client";
 
+import { initialsFromName } from "@/features/common/initials";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import InitialsAvatar from "@/components/ui/initials-avatar";
 import { Button } from "@/components/ui/button";
@@ -29,7 +30,7 @@ const UserProfile = () => {
                 alt={session?.user?.name!}
               />
             ) : (
-              <InitialsAvatar name={session?.user?.name!} />
+              <InitialsAvatar initials={initialsFromName(session?.user?.name!)} />
             )}
             </Avatar>
           </Button>

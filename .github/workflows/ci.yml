@@ -21,4 +21,9 @@ jobs:
       - name: Run ESLint
         run: |
           cd ./src
-          npm run lint 
+          npm run lint
+
+      - name: Run tests
+        run: |
+          cd ./src
+          npm run test 
