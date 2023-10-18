@@ -170,6 +170,8 @@ export const CreateChatThread = async () => {
     type: CHAT_THREAD_ATTRIBUTE,
   };
 
+  // TODO: PMG - Figure out if we can avoid saving at this point,
+  // and delay saving until we have actual content
   const container = await initDBContainer();
   const response = await container.items.create<ChatThreadModel>(modelToSave);
   return response.resource;

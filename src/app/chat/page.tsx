@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 export default async function Home() {
   const chats = await FindAllChatThreadForCurrentUser();
+
   if (chats.length > 0) {
     redirect(`/chat/${chats[0].id}`);
   }
