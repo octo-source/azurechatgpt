@@ -1,6 +1,7 @@
 // Returns the initials based on the name
 export const initialsFromName = (name: string | null) => {
-        if (!name) return "N/A";
+        // Return an empty string if the name is falsy
+        if (!name) return "";
 
         // Split the name into pieces by spaces
         const nameParts = name.split(' ');
