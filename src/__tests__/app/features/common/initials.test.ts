@@ -1,9 +1,9 @@
 import { initialsFromName } from "@/features/common/initials";
 
 describe("initialsFromName", () => {
-  it("returns 'N/A' if name is falsy", () => {
-    expect(initialsFromName(null)).toBe("N/A");
-    expect(initialsFromName("")).toBe("N/A");
+  it("returns '' if name is falsy", () => {
+    expect(initialsFromName(null)).toBe("");
+    expect(initialsFromName("")).toBe("");
   });
 
   it("returns the first two letters of a single name", () => {
