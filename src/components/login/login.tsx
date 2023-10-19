@@ -11,6 +11,7 @@ import {
   CardTitle,
 } from "../ui/card";
 
+// The login card.
 export const LogIn = () => {
   return (
     <Card className="flex gap-2 flex-col min-w-[300px]">
