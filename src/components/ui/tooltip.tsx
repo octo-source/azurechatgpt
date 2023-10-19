@@ -3,11 +3,12 @@ import * as TooltipPrimitives from '@radix-ui/react-tooltip';
 
 const TooltipProvider = TooltipPrimitives.Provider
 
+// A tooltip that appears when hovering over an element.
 const Tooltip = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitives.Root> &
     React.ComponentPropsWithoutRef<typeof TooltipPrimitives.Content>
->(({ ...props }, ref) => {
+>(({ side = "right", align = "center", ...props }, ref) => {
   return (
     <TooltipPrimitives.Root
       open={props.open}
@@ -17,7 +18,7 @@ const Tooltip = React.forwardRef<
       <TooltipPrimitives.Trigger asChild>
         {props.children}
       </TooltipPrimitives.Trigger>
-      <TooltipPrimitives.Content className="TooltipContent" side="right" align="center" {...props}>
+      <TooltipPrimitives.Content className="TooltipContent" side={side} align={align} {...props}>
         {props.content}
         <TooltipPrimitives.Arrow className="TooltipArrow" width={11} height={5} />
       </TooltipPrimitives.Content>

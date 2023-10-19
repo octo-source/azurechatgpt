@@ -13,6 +13,7 @@ import { Button } from "../ui/button";
 import { CodeBlock } from "./code-block";
 import { MemoizedReactMarkdown } from "./memoized-react-markdown";
 
+// Properties for each chat row.
 interface ChatRowProps {
   name: string;
   profilePicture: string;
@@ -20,12 +21,14 @@ interface ChatRowProps {
   type: ChatRole;
 }
 
+// A row in the chat - both assistant generated rows and user generated rows.
 const ChatRow: FC<ChatRowProps> = (props) => {
   const [isIconChecked, setIsIconChecked] = useState(false);
   const toggleIcon = () => {
     setIsIconChecked((prevState) => !prevState);
   };
 
+  // Toggles the copy to clipboard icon and writes the message to the clipboard.
   const handleButtonClick = () => {
     toggleIcon();
     navigator.clipboard.writeText(props.message);

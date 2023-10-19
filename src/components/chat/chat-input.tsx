@@ -10,12 +10,15 @@ interface Props {
   isLoading: boolean;
 }
 
+// The form for sending messages to the chat.
 const ChatInput: FC<Props> = (props) => {
+  // Reference to the send button.
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [rows, setRows] = useState(1);
   const maxRows = 6;
   const [keysPressed, setKeysPressed] = useState(new Set());
 
+  // Handle the enter key being pressed.
   const onKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     setKeysPressed(keysPressed.add(event.key));
 
@@ -34,6 +37,7 @@ const ChatInput: FC<Props> = (props) => {
     }
   };
 
+  // Trigger submission of the text and resetting the size of the textarea.
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     props.handleSubmit(e);
@@ -50,6 +54,7 @@ const ChatInput: FC<Props> = (props) => {
     props.handleInputChange(event);
   };
 
+  // Set the number of rows to the argument value, if it is less than the max.
   const setRowsToMax = (rows: number) => {
     if (rows < maxRows) {
       setRows(rows + 1);

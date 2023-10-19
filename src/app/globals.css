@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Neue Haas Grostek Display Pro';
+  src: url('../public/fonts/NHaasGroteskDSPro-45Lt.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grostek Display Pro';
+  src: url('../public/fonts/NHaasGroteskDSPro-75Bd.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grostek Text Pro';
+  src: url('../public/fonts/NHaasGroteskTXPro-55Rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grostek Text Pro';
+  src: url('../public/fonts/NHaasGroteskTXPro-56It.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+html, body {
+  font-family: 'Neue Haas Grostek Text Pro', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Neue Haas Grostek Display Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

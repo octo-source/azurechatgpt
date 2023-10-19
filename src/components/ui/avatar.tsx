@@ -9,6 +9,7 @@ interface AvatarProps extends React.ComponentPropsWithoutRef<typeof AvatarPrimit
   rounded?: boolean;
 }
 
+// A wrapper for the avatar contents.
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   AvatarProps

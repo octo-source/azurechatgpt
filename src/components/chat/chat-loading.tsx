@@ -3,6 +3,7 @@ import { FC } from "react";
 
 interface Props {}
 
+// A loading indicator for the chat.
 const ChatLoading: FC<Props> = (props) => {
   return (
     <div className="container mx-auto max-w-4xl py-6">
